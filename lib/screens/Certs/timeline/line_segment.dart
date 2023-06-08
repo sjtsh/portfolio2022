@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/providers/timeline_management.dart';
 import 'package:provider/provider.dart';
 
-import '../../components/spacing.dart';
+import '../../../components/spacing.dart';
+
 
 class LineSegment extends StatelessWidget {
   final BoxConstraints constraints;

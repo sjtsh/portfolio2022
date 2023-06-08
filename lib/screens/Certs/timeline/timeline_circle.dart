@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/timeline_management.dart';
-import '../../components/spacing.dart';
+import '../../../components/spacing.dart';
+import '../../../providers/timeline_management.dart';
+
 
 class TimelineCircle extends StatelessWidget {
   final int index;

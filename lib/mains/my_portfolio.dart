@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/providers/navigation_management.dart';
 import 'package:portfolio/screens/Navigation/NavigationAnimation.dart';
-import 'package:portfolio/screens/timeline/timeline_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../Enums/Navigation.dart';

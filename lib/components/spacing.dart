@@ -41,8 +41,9 @@ class ButtonObjectProperties {
   static double buttonHeight = 100;
   static double rightPadding = 20;
 
-  static double get maxHeight => OptimalSize.optHbyR(1);
-  static double get maxWidth => OptimalSize.optHbyR(0.3);
+  static double maxHeight(context) => OptimalSize.optHbyR(1, context);
+
+  static double maxWidth(context) => OptimalSize.optHbyR(0.3, context);
 }
 
 class AnimationStats {

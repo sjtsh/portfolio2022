@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/providers/timeline_management.dart';
+import 'package:portfolio/screens/Certs/Certs.dart';
+import 'package:portfolio/screens/Me/MeScreen.dart';
 import 'package:provider/provider.dart';
 
-import '../screens/timeline/timeline_screen.dart';
+import '../screens/Projects/ProjectHome.dart';
+
 
 enum NavigationEnum {
   certs,
-  proj,
-  exp;
+  me,
+  proj;
 
   String get text {
     switch (this) {
@@ -15,8 +18,8 @@ enum NavigationEnum {
         return "Certs";
       case NavigationEnum.proj:
         return "Proj";
-      case NavigationEnum.exp:
-        return "Exp";
+      case NavigationEnum.me:
+        return "Me";
     }
   }
 
@@ -27,21 +30,8 @@ enum NavigationEnum {
         return const Color(0xff191919);
       case NavigationEnum.proj:
         return const Color(0xff333333);
-      case NavigationEnum.exp:
+      case NavigationEnum.me:
         return Colors.black;
-    }
-  }
-
-  init(BuildContext context) {
-    if (this == NavigationEnum.certs) {
-      context.read<TimelineManagement>().contentScrollController =
-          ScrollController();
-      context.read<TimelineManagement>().wheelScrollController =
-          ScrollController();
-      print(
-          context
-              .read<TimelineManagement>()
-              .contentScrollController.hasClients);
     }
   }
 
@@ -50,9 +40,9 @@ enum NavigationEnum {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: switch (this) {
-          NavigationEnum.certs => MyTimeline(color),
-          NavigationEnum.proj => Placeholder(),
-          NavigationEnum.exp => Placeholder(),
+          NavigationEnum.certs => const Certs(),
+          NavigationEnum.proj => const ProjectHome(),
+          NavigationEnum.me =>  MeScreen(),
         });
   }
 }

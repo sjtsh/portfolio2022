@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/providers/data_management.dart';
 import 'package:portfolio/providers/timeline_management.dart';
-import 'package:portfolio/screens/timeline/date_scroll_view.dart';
-import 'package:portfolio/screens/timeline/line_segment.dart';
-import 'package:portfolio/screens/timeline/timeline_circle.dart';
-import 'package:portfolio/screens/timeline/timeline_content.dart';
 import 'package:portfolio/components/spacing.dart';
+import 'package:portfolio/screens/Certs/timeline/timeline_circle.dart';
+import 'package:portfolio/screens/Certs/timeline/timeline_content.dart';
 import 'package:provider/provider.dart';
+
+import 'date_scroll_view.dart';
+import 'line_segment.dart';
 
 class MyTimeline extends StatefulWidget {
   final Color color;
@@ -27,16 +28,12 @@ class _MyTimelineState extends State<MyTimeline> {
           ? 1
           : context.read<TimelineManagement>().initiateScroll(
               MediaQuery.of(context).size.height,
-              context.read<DataManagement>().timelineList.length),
+              DataManagement.timelineList.length),
     );
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
-    DataManagement readData = context.read<DataManagement>();
     TimelineManagement readTimeline = context.read<TimelineManagement>();
     return Scaffold(
       backgroundColor: widget.color,
@@ -59,7 +56,7 @@ class _MyTimelineState extends State<MyTimeline> {
                   children: [
                     ContentSpacing.paddingArtificial(
                         constraints.maxHeight, constraints.maxWidth),
-                    ...readData.timelineList.asMap().entries.map((e) {
+                    ...DataManagement.timelineList.asMap().entries.map((e) {
                       int a = (context.watch<TimelineManagement>().currentItem -
                           e.key);
                       double formerOpacity = 1 - a.abs() / 2;
@@ -79,7 +76,7 @@ class _MyTimelineState extends State<MyTimeline> {
                                     : LineSegment(
                                         constraints, e.key - 1, false),
                                 TimelineCircle(e.key),
-                                readData.timelineList.length - 1 == e.key
+                                DataManagement.timelineList.length - 1 == e.key
                                     ? Container(
                                         height: MySpacing.getLineHeight(
                                             constraints.maxHeight / 2),

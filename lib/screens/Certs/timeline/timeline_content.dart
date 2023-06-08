@@ -4,7 +4,7 @@ import 'package:portfolio/providers/timeline_management.dart';
 import 'package:portfolio/entities/timeline_content.dart';
 import 'package:provider/provider.dart';
 
-import '../../components/spacing.dart';
+import '../../../components/spacing.dart';
 
 class TimelineContentWidget extends StatelessWidget {
   final BoxConstraints constraints;
@@ -30,14 +30,14 @@ class TimelineContentWidget extends StatelessWidget {
                 .textTheme
                 .headlineMedium
                 ?.copyWith(color: Colors.white),
-          ).lay,
+          ).lay(context),
           Text(
             content.snippet,
             style: Theme.of(context)
                 .textTheme
                 .headlineSmall
                 ?.copyWith(color: Colors.white.withOpacity(0.5)),
-          ).lay,
+          ).lay(context),
           SizedBox(height: (20 + .0)),
           MouseRegion(
             cursor: SystemMouseCursors.grab,
@@ -74,12 +74,12 @@ class TimelineContentWidget extends StatelessWidget {
                                         Icons.info,
                                         color: Colors.white,
                                       ),
-                                      SizedBox(width: 12.lay),
+                                      SizedBox(width: 12.lay(context)),
                                       Expanded(
                                           child: Text(
                                         "Tap anywhere to exit",
                                         style: TextStyle(color: Colors.white),
-                                      ).lay),
+                                      ).lay(context)),
                                     ],
                                   ),
                                 ),
@@ -97,7 +97,8 @@ class TimelineContentWidget extends StatelessWidget {
             },
             child: AnimatedContainer(
               height: index == context.watch<TimelineManagement>().currentItem
-                  ? (MySpacing.getLineHeight(constraints.maxHeight) * 2 / 3).lay
+                  ? (MySpacing.getLineHeight(constraints.maxHeight) * 2 / 3)
+                      .lay(context)
                   : 0,
               duration: AnimationStats.animationDuration,
               child: Image.asset(content.assetURL, fit: BoxFit.contain),

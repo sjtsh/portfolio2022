@@ -1,10 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../entities/SingleProject.dart';
 import '../entities/timeline_content.dart';
 
-class DataManagement with DiagnosticableTreeMixin, ChangeNotifier {
-  List<TimelineContent> timelineList = [
+class DataManagement {
+  static List<TimelineContent> timelineList = [
     TimelineContent(
         //0
         "Bachelors First Class Honours Degree in Computer Science",
@@ -67,6 +68,78 @@ class DataManagement with DiagnosticableTreeMixin, ChangeNotifier {
         DateTime(2020, 2, 12)),
   ];
 
+  static List<DateTime?> dates = [];
 
-  List<DateTime?> dates = [];
+  static List<SingleProjectObj> projects = [
+    SingleProjectObj("Appetit","assets/projects/icons/appetit.png", "assets/projects/appetit.png",
+        Colors.black, const Color(0xff767676), const Color(0xff343434)),
+    SingleProjectObj("Wardrobe",
+        "assets/projects/icons/wardrobe.png",
+        "assets/projects/wardrobe.png",
+        const Color(0xff0065FF),
+        const Color(0xffD2E4FF),
+        const Color(0xff0065FF)),
+    SingleProjectObj("Portfolio",
+        "assets/projects/icons/portfolio.png",
+        "assets/projects/portfolio.png",
+        const Color(0xffFF0000),
+        const Color(0xffFFCDCD),
+        const Color(0xffFF0000)),
+    SingleProjectObj("Appetit","assets/projects/icons/appetit.png", "assets/projects/appetit.png",
+        Colors.black, const Color(0xff767676), const Color(0xff343434)),
+    SingleProjectObj("Wardrobe",
+        "assets/projects/icons/wardrobe.png",
+        "assets/projects/wardrobe.png",
+        const Color(0xff0065FF),
+        const Color(0xffD2E4FF),
+        const Color(0xff0065FF)),
+    SingleProjectObj("Portfolio",
+        "assets/projects/icons/portfolio.png",
+        "assets/projects/portfolio.png",
+        const Color(0xffFF0000),
+        const Color(0xffFFCDCD),
+        const Color(0xffFF0000)),
+    SingleProjectObj("Appetit","assets/projects/icons/appetit.png", "assets/projects/appetit.png",
+        Colors.black, const Color(0xff767676), const Color(0xff343434)),
+    SingleProjectObj("Wardrobe",
+        "assets/projects/icons/wardrobe.png",
+        "assets/projects/wardrobe.png",
+        const Color(0xff0065FF),
+        const Color(0xffD2E4FF),
+        const Color(0xff0065FF)),
+    SingleProjectObj("Portfolio",
+        "assets/projects/icons/portfolio.png",
+        "assets/projects/portfolio.png",
+        const Color(0xffFF0000),
+        const Color(0xffFFCDCD),
+        const Color(0xffFF0000)),
+    SingleProjectObj("Appetit","assets/projects/icons/appetit.png", "assets/projects/appetit.png",
+        Colors.black, const Color(0xff767676), const Color(0xff343434)),
+    SingleProjectObj("Wardrobe",
+        "assets/projects/icons/wardrobe.png",
+        "assets/projects/wardrobe.png",
+        const Color(0xff0065FF),
+        const Color(0xffD2E4FF),
+        const Color(0xff0065FF)),
+    SingleProjectObj("Portfolio",
+        "assets/projects/icons/portfolio.png",
+        "assets/projects/portfolio.png",
+        const Color(0xffFF0000),
+        const Color(0xffFFCDCD),
+        const Color(0xffFF0000)),
+    SingleProjectObj("Appetit","assets/projects/icons/appetit.png", "assets/projects/appetit.png",
+        Colors.black, const Color(0xff767676), const Color(0xff343434)),
+    SingleProjectObj("Wardrobe",
+        "assets/projects/icons/wardrobe.png",
+        "assets/projects/wardrobe.png",
+        const Color(0xff0065FF),
+        const Color(0xffD2E4FF),
+        const Color(0xff0065FF)),
+    SingleProjectObj("Portfolio",
+        "assets/projects/icons/portfolio.png",
+        "assets/projects/portfolio.png",
+        const Color(0xffFF0000),
+        const Color(0xffFFCDCD),
+        const Color(0xffFF0000))
+  ];
 }

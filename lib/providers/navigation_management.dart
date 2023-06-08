@@ -3,21 +3,21 @@ import 'package:portfolio/Enums/Navigation.dart';
 
 class NavigationManagement with ChangeNotifier {
   List<(double, NavigationEnum)> currentNav = [
-    (100, NavigationEnum.certs),
-    (0, NavigationEnum.exp)
+    (100, NavigationEnum.me),
+    (0, NavigationEnum.certs),
   ];
   bool animateNavigation = true;
 
   void changePage(int i, BuildContext context) async {
     NavigationEnum nav = getByPosition(i);
-    if (currentNav.last.$2 != nav) currentNav.add((0, NavigationEnum.exp));
+    if (currentNav.last.$2 != nav) currentNav.add((0, NavigationEnum.me));
     notifyListeners();
-    nav.init(context);
     await Future.delayed(const Duration(milliseconds: 50));
     currentNav.removeLast();
     currentNav.add((100, nav));
     notifyListeners();
-    currentNav.add((0, NavigationEnum.exp));
+    currentNav.add((0, NavigationEnum.me));
+    hoverPage(i);
   }
 
   void removeLastIfIncomplete() {
@@ -43,7 +43,7 @@ class NavigationManagement with ChangeNotifier {
   }
 
   NavigationEnum getByPosition(i) {
-    return NavigationEnum.values.where((e) => current != e).toList()[i];
+    return NavigationEnum.values.toList()[i];
   }
 
   void exitPage(int i) {

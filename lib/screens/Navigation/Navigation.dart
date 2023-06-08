@@ -17,9 +17,9 @@ class Navigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-        right: 0,
-        height: OptimalSize.optHbyR(1),
-        width: OptimalSize.optWbyR(0.3),
+        top: 0,
+        height: OptimalSize.optHbyR(0.1, context),
+        width: OptimalSize.optWbyR(1, context),
         child: const AnimatedNavigation());
   }
 }
@@ -52,16 +52,15 @@ class _AnimatedNavigationState extends State<AnimatedNavigation> {
       onExit: onExit,
       child: Container(
         color: Colors.transparent,
-        child: Row(
+        child: Column(
           children: [
             Expanded(
               child: Builder(builder: (context) {
                 NavigationManagement watch =
                     context.watch<NavigationManagement>();
-                List<NavigationEnum> presentable = NavigationEnum.values
-                    .where((element) => element != watch.current)
-                    .toList();
-                return Column(
+                List<NavigationEnum> presentable =
+                    NavigationEnum.values.toList();
+                return Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(flex: 3, child: Container()),
@@ -74,7 +73,6 @@ class _AnimatedNavigationState extends State<AnimatedNavigation> {
                 );
               }),
             ),
-            SizedBox(width: ButtonObjectProperties.rightPadding),
           ],
         ),
       ),
@@ -82,14 +80,17 @@ class _AnimatedNavigationState extends State<AnimatedNavigation> {
   }
 
   Widget buildButton(int i, NavigationEnum nav) {
-    ButtonHoverObj obj =
-        ButtonHoverObj(key: switch (i) { 1 => key1, _ => key2 }, text: nav);
-    var sizeTrans = obj.generateMySizeRatio();
+    NavigationManagement watch = context.watch<NavigationManagement>();
+    ButtonHoverObj obj = ButtonHoverObj(
+        key: switch (i) { 0 => key1, 1 => key3, _ => key2 }, text: nav);
+    var sizeTrans = obj.generateMySizeRatio(context);
     var hw = obj.getHW(sizeTrans.size);
     return Align(
       alignment: Alignment.centerRight,
       child: AnimatedOpacity(
-        opacity: min(1, sizeTrans.transparency.abs() + 0.2),
+        opacity: watch.current == nav
+            ? 1
+            : min(1, sizeTrans.transparency.abs() + 0.2),
         duration: const Duration(milliseconds: 200),
         child: MouseRegion(
           onEnter: (PointerEnterEvent listener) =>
@@ -97,7 +98,8 @@ class _AnimatedNavigationState extends State<AnimatedNavigation> {
           onExit: (PointerExitEvent listener) =>
               context.read<NavigationManagement>().exitPage(i),
           child: GestureDetector(
-            onTap: () => context.read<NavigationManagement>().changePage(i, context),
+            onTap: () =>
+                context.read<NavigationManagement>().changePage(i, context),
             child: SizedBox(
               key: obj.key,
               height: ButtonObjectProperties.buttonHeight,
@@ -114,7 +116,7 @@ class _AnimatedNavigationState extends State<AnimatedNavigation> {
                         child: Text(obj.text.text,
                                 style: const TextStyle(
                                     fontSize: 40, color: Colors.white))
-                            .lay),
+                            .lay(context)),
                   ),
                 ),
               ),

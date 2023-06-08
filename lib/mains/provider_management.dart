@@ -14,20 +14,16 @@ class ProviderManagement extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) {
-          return DataManagement();
-        }),
-        ChangeNotifierProvider(create: (_) {
           return NavigationManagement();
         }),
       ],
       child: EstablishLayout(
         child: Builder(builder: (context) {
-          context.read<DataManagement>().dates = [
+          DataManagement.dates = [
             null,
             ...List.generate(
-                context.read<DataManagement>().timelineList.length,
-                (index) => context
-                    .read<DataManagement>()
+                DataManagement.timelineList.length,
+                (index) => DataManagement
                     .timelineList[index]
                     .certificationDate).reversed,
             null

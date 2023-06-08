@@ -3,8 +3,9 @@ import 'package:portfolio/components/Ui%20components/ByLayout/ByLayout.dart';
 import 'package:portfolio/components/spacing.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/data_management.dart';
-import '../../providers/timeline_management.dart';
+import '../../../providers/data_management.dart';
+import '../../../providers/timeline_management.dart';
+
 
 class DateScrollView extends StatelessWidget {
   final BoxConstraints constraints;
@@ -28,7 +29,6 @@ class DateScrollView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DataManagement readData = context.read<DataManagement>();
     TimelineManagement readTimeline = context.read<TimelineManagement>();
     return ListWheelScrollView(
         physics: const NeverScrollableScrollPhysics(),
@@ -38,20 +38,20 @@ class DateScrollView extends StatelessWidget {
         itemExtent: MySpacing.getLineHeight(constraints.maxHeight) / 2,
         // itemExtent: ObjectProperties.outerCircleSize +
         //     MySpacing.getLineHeight(constraints.maxHeight),
-        children: readData.dates
+        children: DataManagement.dates
             .map((e) => Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   (e?.year ?? "").toString(),
                   style: const TextStyle(color: Colors.white, fontSize: 30),
-                ).lay,
+                ).lay(context),
                 Text(
                   (e == null ? "" : "${monthList[e.month]} ${e.day}")
                       .toString(),
                   style: TextStyle(
                       color: Colors.white.withOpacity(0.5), fontSize: 20),
-                ).lay,
+                ).lay(context),
               ],
             ))
             .toList());

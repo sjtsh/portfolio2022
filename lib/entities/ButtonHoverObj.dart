@@ -13,12 +13,12 @@ class ButtonHoverObj {
 
   ButtonHoverObj({required this.key, required this.text});
 
-  double calcDistanceFurthest(offset) {
-    double farthestW = ButtonObjectProperties.maxWidth -
+  double calcDistanceFurthest(offset, context) {
+    double farthestW = ButtonObjectProperties.maxWidth(context) -
         ButtonObjectProperties.buttonWidth -
         ButtonObjectProperties.rightPadding;
     double farthestH = max(
-        ButtonObjectProperties.maxHeight -
+        ButtonObjectProperties.maxHeight(context) -
             offset.dy -
             ButtonObjectProperties.buttonHeight,
         offset.dy);
@@ -36,7 +36,7 @@ class ButtonHoverObj {
         closestCurrentH * closestCurrentH + closestCurrentW * closestCurrentW);
   }
 
-  ({double size, double transparency}) generateMySizeRatio() {
+  ({double size, double transparency}) generateMySizeRatio(context) {
     RenderObject? obj = key.currentContext?.findRenderObject();
     if (obj == null || lastListened == null) {
       return (size: 0.0, transparency: 0.0);
@@ -44,7 +44,7 @@ class ButtonHoverObj {
     RenderBox box = obj as RenderBox;
     Offset offset = box.localToGlobal(Offset.zero);
     if (isInTheButton(offset)) return (size: 1, transparency: 1);
-    double distance = calcDistanceFurthest(offset);
+    double distance = calcDistanceFurthest(offset, context);
     double distanceCurrent = calcDistanceCurrent(offset);
     double normalizedRatio = distanceCurrent / distance;
     double transparency = 0;
