@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import '../components/spacing.dart';
 
 class TimelineManagement with DiagnosticableTreeMixin, ChangeNotifier {
-
   bool segmentAnimation = false;
 
   int currentItem = 0;
@@ -13,9 +12,9 @@ class TimelineManagement with DiagnosticableTreeMixin, ChangeNotifier {
   int? animationChangePositionAhead;
   bool segmentAnimationMutex = false;
 
-  final ScrollController contentScrollController = ScrollController();
+  ScrollController contentScrollController = ScrollController();
 
-  final ScrollController wheelScrollController =
+  ScrollController wheelScrollController =
       ScrollController(initialScrollOffset: 80);
 
   initiateScroll(double height, int timelineListLength) {
@@ -40,14 +39,14 @@ class TimelineManagement with DiagnosticableTreeMixin, ChangeNotifier {
     bool isForward = newCurrentItem > currentItem;
     currentItem = newCurrentItem;
     notifyListeners();
-    if(segmentAnimation){
+    if (segmentAnimation) {
       animateSegment(isForward);
     }
     scrollWheel(height, timelineListLength);
   }
 
   animateSegment(bool isForward) {
-    if(!segmentAnimationMutex){
+    if (!segmentAnimationMutex) {
       segmentAnimationMutex = true;
       if (isForward) {
         animationChangePositionAhead = currentItem;
@@ -115,5 +114,4 @@ class TimelineManagement with DiagnosticableTreeMixin, ChangeNotifier {
 //   notifyListeners();
 //   animateSegmentBack(1);
 // }
-
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Ui components/ByLayout/ByLayout.dart';
+
 class MySpacing {
   static EdgeInsets getEdgeInsets(double height, double width) =>
       EdgeInsets.only(
@@ -32,6 +34,15 @@ class ObjectProperties {
   static double get outerCircleSize => 50;
 
   static double get innerCircleSize => 30;
+}
+
+class ButtonObjectProperties {
+  static double buttonWidth = 200;
+  static double buttonHeight = 100;
+  static double rightPadding = 20;
+
+  static double get maxHeight => OptimalSize.optHbyR(1);
+  static double get maxWidth => OptimalSize.optHbyR(0.3);
 }
 
 class AnimationStats {

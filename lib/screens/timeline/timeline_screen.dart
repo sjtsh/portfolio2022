@@ -9,7 +9,9 @@ import 'package:portfolio/components/spacing.dart';
 import 'package:provider/provider.dart';
 
 class MyTimeline extends StatefulWidget {
-  const MyTimeline({Key? key}) : super(key: key);
+  final Color color;
+
+  MyTimeline(this.color);
 
   @override
   State<MyTimeline> createState() => _MyTimelineState();
@@ -21,18 +23,23 @@ class _MyTimelineState extends State<MyTimeline> {
     // TODO: implement initState
     super.initState();
     Future.delayed(const Duration(milliseconds: 200)).then(
-      (value) => context.read<TimelineManagement>().initiateScroll(
-            MediaQuery.of(context).size.height,
-            context.read<DataManagement>().timelineList.length,
-          ),
+      (value) => !mounted
+          ? 1
+          : context.read<TimelineManagement>().initiateScroll(
+              MediaQuery.of(context).size.height,
+              context.read<DataManagement>().timelineList.length),
     );
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
     DataManagement readData = context.read<DataManagement>();
     TimelineManagement readTimeline = context.read<TimelineManagement>();
     return Scaffold(
+      backgroundColor: widget.color,
       body: LayoutBuilder(builder: (context, BoxConstraints constraints) {
         return Row(
           children: [

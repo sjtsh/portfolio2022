@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/components/Ui%20components/ByLayout/ByLayout.dart';
 import 'package:portfolio/components/spacing.dart';
 import 'package:provider/provider.dart';
 
@@ -44,13 +45,13 @@ class DateScrollView extends StatelessWidget {
                 Text(
                   (e?.year ?? "").toString(),
                   style: const TextStyle(color: Colors.white, fontSize: 30),
-                ),
+                ).lay,
                 Text(
                   (e == null ? "" : "${monthList[e.month]} ${e.day}")
                       .toString(),
                   style: TextStyle(
                       color: Colors.white.withOpacity(0.5), fontSize: 20),
-                ),
+                ).lay,
               ],
             ))
             .toList());
