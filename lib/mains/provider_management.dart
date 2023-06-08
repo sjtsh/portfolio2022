@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/providers/data_management.dart';
 import 'package:portfolio/providers/navigation_management.dart';
@@ -9,8 +10,22 @@ import 'my_portfolio.dart';
 
 class ProviderManagement extends StatelessWidget {
   const ProviderManagement({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    print("MediaQuery.of(context).size.width: ${MediaQuery.of(context).size.width}");
+    print("MediaQuery.of(context).size.height: ${MediaQuery.of(context).size.height}");
+    if (!kDebugMode) {
+      if (MediaQuery.of(context).size.width < 810 ||
+          MediaQuery.of(context).size.height < 760)
+        return MaterialApp(
+          home: Scaffold(
+            body: Center(
+              child: Text("Only desktop is supported yet"),
+            ),
+          ),
+        );
+    }
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) {
@@ -22,10 +37,10 @@ class ProviderManagement extends StatelessWidget {
           DataManagement.dates = [
             null,
             ...List.generate(
-                DataManagement.timelineList.length,
-                (index) => DataManagement
-                    .timelineList[index]
-                    .certificationDate).reversed,
+                    DataManagement.timelineList.length,
+                    (index) =>
+                        DataManagement.timelineList[index].certificationDate)
+                .reversed,
             null
           ];
           return const MyPortfolio();

@@ -41,9 +41,10 @@ class MeScreen extends StatelessWidget {
 
   Widget get(Widget Function(BoxConstraints constraints) grid) {
     return Builder(builder: (context) {
-      double maxWidth = (MediaQuery.of(context).size.width - 70) / 2;
+      double maxWidth = (MediaQuery.of(context).size.width - 90) / 2;
+      print(maxWidth);
       return SizedBox(
-        height: min(maxWidth, 600),
+        height: 600,
         width: min(maxWidth, 600),
         child: LayoutBuilder(builder: (context, BoxConstraints constraints) {
           return Container(
