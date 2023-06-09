@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -65,7 +66,7 @@ class _AnimatedNavigationState extends State<AnimatedNavigation> {
                   children: [
                     Expanded(flex: 3, child: Container()),
                     for (int i = 0; i < presentable.length; i++) ...[
-                      buildButton(i, presentable[i]),
+                      Expanded(flex: 1, child: buildButton(i, presentable[i])),
                       Expanded(flex: 1, child: Container())
                     ],
                     Expanded(flex: 2, child: Container()),
@@ -100,7 +101,7 @@ class _AnimatedNavigationState extends State<AnimatedNavigation> {
           child: GestureDetector(
             onTap: () =>
                 context.read<NavigationManagement>().changePage(i, context),
-            child: SizedBox(
+            child: Container(
               key: obj.key,
               height: ButtonObjectProperties.buttonHeight,
               width: ButtonObjectProperties.buttonWidth,
@@ -113,10 +114,9 @@ class _AnimatedNavigationState extends State<AnimatedNavigation> {
                     fit: BoxFit.fitWidth,
                     child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text(obj.text.text,
-                                style: const TextStyle(
-                                    fontSize: 40, color: Colors.white))
-                            .lay(context)),
+                        child: AutoSizeText(obj.text.text,
+                            style: const TextStyle(
+                                fontSize: 40, color: Colors.white))),
                   ),
                 ),
               ),

@@ -92,8 +92,7 @@ class TimelineContentWidget extends StatelessWidget {
                   });
             },
             onExit: (exit) {
-              print(Navigator.canPop(context));
-              // Navigator.pop(context);
+              Navigator.pop(context);
             },
             child: AnimatedContainer(
               height: index == context.watch<TimelineManagement>().currentItem

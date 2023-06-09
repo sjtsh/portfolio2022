@@ -34,13 +34,9 @@ class ProjectImage extends StatelessWidget {
             ),
           ),
           child: Container(
-            margin: MediaQuery.of(context).size.width > 800
-                ? EdgeInsets.all(50)
-                : EdgeInsets.all(20),
+            margin: EdgeInsets.all(50),
             width: MediaQuery.of(context).size.width * 0.8,
-            height: MediaQuery.of(context).size.width > 800
-                ? MediaQuery.of(context).size.height * 0.6
-                : MediaQuery.of(context).size.height * 0.2,
+            height:  MediaQuery.of(context).size.height * 0.6,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
             ),
