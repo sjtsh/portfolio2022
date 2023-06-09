@@ -12,7 +12,9 @@ class GmailGrid extends StatelessWidget {
     return WhenClicked(
       textToShow: 'Mail me',
       onTap: () {
-        launchUrl(Uri.parse("https://drive.google.com/u/0/uc?id=1XiGHyb2OABE-sIvqJX3xnQXlHN7SQp1A&export=download"));
+        String url =
+            'mailto:mastersajat@gmail.com?subject=${"From the website"}&body=Hi, I am ';
+        launchUrl(Uri.parse(url));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -87,7 +89,9 @@ class GmailGrid extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(border: Border.all(color: Colors.black.withOpacity(0.1)), borderRadius: BorderRadius.circular(12)),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black.withOpacity(0.1)),
+                    borderRadius: BorderRadius.circular(12)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -99,7 +103,8 @@ class GmailGrid extends StatelessWidget {
                       height: 10,
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(16).copyWith(left:0, right: 0),
+                      padding:
+                          const EdgeInsets.all(16).copyWith(left: 0, right: 0),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -116,8 +121,8 @@ class GmailGrid extends StatelessWidget {
                           Expanded(
                             child: Text(
                               "August 5, 2002",
-                              style:
-                              TextStyle(fontSize: 16, color: Color(0xff202124)),
+                              style: TextStyle(
+                                  fontSize: 16, color: Color(0xff202124)),
                             ),
                           ),
                           Icon(
@@ -135,9 +140,7 @@ class GmailGrid extends StatelessWidget {
                     ),
                     Text(
                       "More options",
-                      style: TextStyle(
-                          fontSize: 12,
-                          color: Color(0xff5f6368)),
+                      style: TextStyle(fontSize: 12, color: Color(0xff5f6368)),
                     ),
                   ],
                 ),
@@ -147,7 +150,9 @@ class GmailGrid extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(border: Border.all(color: Colors.black.withOpacity(0.1)), borderRadius: BorderRadius.circular(12)),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black.withOpacity(0.1)),
+                    borderRadius: BorderRadius.circular(12)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -159,7 +164,8 @@ class GmailGrid extends StatelessWidget {
                       height: 10,
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(16).copyWith(left:0, right: 0),
+                      padding:
+                          const EdgeInsets.all(16).copyWith(left: 0, right: 0),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -176,8 +182,8 @@ class GmailGrid extends StatelessWidget {
                           Expanded(
                             child: Text(
                               "mastersajat@gmail.com",
-                              style:
-                                  TextStyle(fontSize: 16, color: Color(0xff202124)),
+                              style: TextStyle(
+                                  fontSize: 16, color: Color(0xff202124)),
                             ),
                           ),
                           Icon(
@@ -191,7 +197,8 @@ class GmailGrid extends StatelessWidget {
                       color: Colors.black.withOpacity(0.1),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(16).copyWith(left:0, right: 0),
+                      padding:
+                          const EdgeInsets.all(16).copyWith(left: 0, right: 0),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -208,8 +215,8 @@ class GmailGrid extends StatelessWidget {
                           Expanded(
                             child: Text(
                               "986-0277521",
-                              style:
-                              TextStyle(fontSize: 16, color: Color(0xff202124)),
+                              style: TextStyle(
+                                  fontSize: 16, color: Color(0xff202124)),
                             ),
                           ),
                           Icon(
@@ -227,9 +234,7 @@ class GmailGrid extends StatelessWidget {
                     ),
                     Text(
                       "More options",
-                      style: TextStyle(
-                          fontSize: 12,
-                          color: Color(0xff5f6368)),
+                      style: TextStyle(fontSize: 12, color: Color(0xff5f6368)),
                     ),
                   ],
                 ),

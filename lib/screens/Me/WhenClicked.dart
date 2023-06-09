@@ -27,13 +27,13 @@ class _WhenClickedState extends State<WhenClicked> {
         child: Stack(
           children: [
             widget.child,
-            GestureDetector(
-              onTap: widget.onTap,
-              child: Positioned.fill(
-                  child: AnimatedOpacity(
+            Positioned.fill(
+              child: AnimatedOpacity(
                 opacity: hovering ? 1 : 0,
                 duration: const Duration(milliseconds: 200),
-                child: Container(
+                child: GestureDetector(
+                  onTap: widget.onTap,
+                  child: Container(
                   color: Colors.white.withOpacity(0.5),
                   child: Center(
                     child: Container(
@@ -55,7 +55,8 @@ class _WhenClickedState extends State<WhenClicked> {
                     ),
                   ),
                 ),
-              )),
+                ),
+              ),
             )
           ],
         ));
