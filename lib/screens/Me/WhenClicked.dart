@@ -25,6 +25,7 @@ class _WhenClickedState extends State<WhenClicked> {
         onHover: (PointerHoverEvent event) => setState(() => hovering = true),
         onExit: (PointerExitEvent event) => setState(() => hovering = false),
         child: Stack(
+          clipBehavior: Clip.hardEdge,
           children: [
             widget.child,
             Positioned.fill(

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/providers/data_management.dart';
@@ -61,23 +62,12 @@ class Indicator extends StatelessWidget {
                               ),
                               if (selected || hovering)
                                 Center(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        DataManagement.projects[i].title,
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.w900,
-                                            fontSize: 25),
-                                      ),
-                                      const SizedBox(width: 12),
-                                      SizedBox(
-                                          height: 30,
-                                          width: 30,
-                                          child: Image.asset(DataManagement
-                                              .projects[i].logoUrl))
-                                    ],
+                                  child: AutoSizeText(
+                                    DataManagement.projects[i].title,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w900,
+                                        fontSize: 25),
+                                    maxLines: 1,
                                   ),
                                 ),
                             ],
