@@ -144,7 +144,7 @@ class DataManagement {
     SingleProjectObj(
         "Portfolio",
         "assets/projects/icons/logo.png",
-        "assets/projects/logo.png",
+        "assets/projects/portfolio.png",
         const Color(0xff1F2933),
         const Color(0xff8F9499),
         const Color(0xff1F2933)),

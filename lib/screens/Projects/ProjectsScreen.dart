@@ -29,7 +29,8 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
             Expanded(
               child: PageView(
                 controller: context.read<ProjectManagement>().controller,
-                onPageChanged: (int i)=> context.read<ProjectManagement>().clickedIndicator(i),
+                onPageChanged: (int i) =>
+                    context.read<ProjectManagement>().changeIndex(i),
                 pageSnapping: true,
                 children: [
                   for (int i = 0; i < DataManagement.projects.length; i++)

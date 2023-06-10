@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:portfolio/Enums/Navigation.dart';
 import 'package:portfolio/screens/Me/CVGrid.dart';
+import 'package:portfolio/screens/Me/Contact.dart';
 
 import '../../components/AnimatedListView.dart';
 import 'GithubGrid.dart';
@@ -34,12 +36,17 @@ class _MeScreenState extends State<MeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 100, left: 30.0, right: 30),
-      child: Builder(builder: (context) {
-        List<Widget> children = grids.map((e) => get(e)).toList();
-        return AnimatedListView(ListView(children: children));
-      }),
+    return Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 100, left: 30.0, right: 30),
+          child: Builder(builder: (context) {
+            List<Widget> children = grids.map((e) => get(e)).toList();
+            return AnimatedListView(ListView(children: children));
+          }),
+        ),
+        Contact()
+      ],
     );
   }
 

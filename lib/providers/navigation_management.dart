@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:portfolio/Enums/Navigation.dart';
 
 class MobileNavigationManagement with ChangeNotifier {
-  NavigationEnum _currentNav = NavigationEnum.certs;
+  NavigationEnum _currentNav = NavigationEnum.me;
 
   NavigationEnum get currentNav => _currentNav;
 

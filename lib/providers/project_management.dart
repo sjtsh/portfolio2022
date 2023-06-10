@@ -7,12 +7,15 @@ class ProjectManagement with ChangeNotifier {
   ScrollController scroll = ScrollController();
   late double maxWidth;
 
-  clickedIndicator(int index) {
+  clickedIndicator(int index) async {
+      await controller.animateToPage(index,
+          duration: const Duration(milliseconds: 500), curve: Curves.bounceInOut);
+  }
+
+  changeIndex(int index) {
     currentIndex = index;
-    controller.animateToPage(index,
-        duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
-    notifyListeners();
     centerElement(index);
+    notifyListeners();
   }
 
   hoverIndicator(int index) {
