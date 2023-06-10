@@ -5,6 +5,7 @@ class WhenClicked extends StatefulWidget {
   final Widget child;
   final String textToShow;
   final void Function() onTap;
+  final void Function() click;
   final bool isClicked;
 
   const WhenClicked(
@@ -12,7 +13,7 @@ class WhenClicked extends StatefulWidget {
       required this.child,
       required this.textToShow,
       required this.onTap,
-      required this.isClicked});
+      required this.isClicked, required this.click});
 
   @override
   State<WhenClicked> createState() => _WhenClickedState();
@@ -24,8 +25,14 @@ class _WhenClickedState extends State<WhenClicked> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-        onHover: (PointerHoverEvent event) => setState(() => hovering = true),
-        onExit: (PointerExitEvent event) => setState(() => hovering = false),
+        onHover: (PointerHoverEvent event) => setState(() {
+              hovering = true;
+              widget.click();
+            }),
+        onExit: (PointerExitEvent event) => setState(() {
+              hovering = false;
+              widget.click();
+            }),
         child: Stack(
           clipBehavior: Clip.hardEdge,
           children: [

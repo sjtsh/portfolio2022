@@ -19,6 +19,7 @@ class CVGrid extends StatelessWidget {
         launchUrl(Uri.parse(
             "https://drive.google.com/u/0/uc?id=1XiGHyb2OABE-sIvqJX3xnQXlHN7SQp1A&export=download"));
       },
+      click: ()=>click() ,
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),

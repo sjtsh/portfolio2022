@@ -14,6 +14,7 @@ class GmailGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WhenClicked(
+      click: ()=>click() ,
       textToShow: 'Mail me',
       onTap: () {
         click();

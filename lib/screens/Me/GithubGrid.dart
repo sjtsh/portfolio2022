@@ -15,6 +15,7 @@ class GithubGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WhenClicked(
+      click: ()=>click() ,
       textToShow: 'Visit My Github',
       onTap: () {
         click();

@@ -102,7 +102,7 @@ class DataManagement {
     SingleProjectObj(
         "SO",
         "assets/projects/icons/deliveryboylogo.png",
-        "assets/projects/so.png",
+        "assets/projects/SO.png",
         const Color(0xffFF0000),
         const Color(0xffFFCDCD),
         const Color(0xffFF0000)),
@@ -143,8 +143,8 @@ class DataManagement {
         const Color(0xff6DA7FE)),
     SingleProjectObj(
         "Portfolio",
-        "assets/projects/icons/portfolio.png",
-        "assets/projects/portfolio.png",
+        "assets/projects/icons/logo.png",
+        "assets/projects/logo.png",
         const Color(0xff1F2933),
         const Color(0xff8F9499),
         const Color(0xff1F2933)),

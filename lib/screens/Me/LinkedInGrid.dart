@@ -13,6 +13,7 @@ class LinkedInGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WhenClicked(
+      click: ()=>click() ,
       textToShow: 'Visit My Linked In',
       onTap: () {
         click();
