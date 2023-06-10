@@ -13,20 +13,20 @@ class ProviderManagement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size.width);
-    print(MediaQuery.of(context).size.height);
-    if (!kDebugMode) {
-      if (MediaQuery.of(context).size.width < 640 ||
-          MediaQuery.of(context).size.height < 500) {
-        return const MaterialApp(
-          home: Scaffold(
-            body: Center(
-              child: Text("Mobile is not supported yet"),
-            ),
-          ),
-        );
-      }
-    }
+    // print(MediaQuery.of(context).size.width);
+    // print(MediaQuery.of(context).size.height);
+    // if (!kDebugMode) {
+    //   if (MediaQuery.of(context).size.width < 640 ||
+    //       MediaQuery.of(context).size.height < 500) {
+    //     return const MaterialApp(
+    //       home: Scaffold(
+    //         body: Center(
+    //           child: Text("Mobile is not supported yet"),
+    //         ),
+    //       ),
+    //     );
+    //   }
+    // }
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) {
