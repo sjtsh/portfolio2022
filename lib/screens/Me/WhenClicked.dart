@@ -5,12 +5,14 @@ class WhenClicked extends StatefulWidget {
   final Widget child;
   final String textToShow;
   final void Function() onTap;
+  final bool isClicked;
 
   const WhenClicked(
       {super.key,
       required this.child,
       required this.textToShow,
-      required this.onTap});
+      required this.onTap,
+      required this.isClicked});
 
   @override
   State<WhenClicked> createState() => _WhenClickedState();
@@ -30,32 +32,32 @@ class _WhenClickedState extends State<WhenClicked> {
             widget.child,
             Positioned.fill(
               child: AnimatedOpacity(
-                opacity: hovering ? 1 : 0,
+                opacity: hovering && widget.isClicked ? 1 : 0,
                 duration: const Duration(milliseconds: 200),
                 child: GestureDetector(
                   onTap: widget.onTap,
                   child: Container(
-                  color: Colors.white.withOpacity(0.5),
-                  child: Center(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.green,
-                          border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.circular(12)),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 12, horizontal: 20),
-                        child: Text(
-                          widget.textToShow,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
+                    color: Colors.white.withOpacity(0.5),
+                    child: Center(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.green,
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(12)),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 12, horizontal: 20),
+                          child: Text(
+                            widget.textToShow,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
                 ),
               ),
             )

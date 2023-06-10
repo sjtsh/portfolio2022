@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/components/Ui%20components/ByLayout/ByLayout.dart';
 import 'package:portfolio/screens/Me/WhenClicked.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class GmailGrid extends StatelessWidget {
   final BoxConstraints constraints;
+  final bool isClicked;
+  final Function click;
 
-  const GmailGrid(this.constraints, {super.key});
+  const GmailGrid(this.constraints,
+      {super.key, required this.isClicked, required this.click});
 
   @override
   Widget build(BuildContext context) {
     return WhenClicked(
       textToShow: 'Mail me',
       onTap: () {
+        click();
+
         String url =
             'mailto:mastersajat@gmail.com?subject=${"From the website"}&body=Hi, I am ';
         launchUrl(Uri.parse(url));
       },
+      isClicked: isClicked,
       child: Container(
         decoration: BoxDecoration(
             color: Colors.white,
@@ -70,17 +77,19 @@ class GmailGrid extends StatelessWidget {
                   SizedBox(
                     width: 12,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Sajat Shrestha",
-                          style: TextStyle(color: Color(0xff565656))),
-                      SizedBox(height: 4),
-                      Text(
-                        "mastersajat@gmail.com",
-                        style: TextStyle(color: Color(0xff808281)),
-                      )
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Sajat Shrestha",
+                            style: TextStyle(color: Color(0xff565656))).lay(context),
+                        SizedBox(height: 4),
+                        Text(
+                          "mastersajat@gmail.com",
+                          style: TextStyle(color: Color(0xff808281)),
+                        ).lay(context)
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -98,7 +107,7 @@ class GmailGrid extends StatelessWidget {
                     Text(
                       "Basic info",
                       style: TextStyle(fontSize: 22, color: Color(0xff202124)),
-                    ),
+                    ).lay(context),
                     SizedBox(
                       height: 10,
                     ),
@@ -114,7 +123,7 @@ class GmailGrid extends StatelessWidget {
                                 fontSize: 12,
                                 color: Color(0xff5f6368),
                                 fontWeight: FontWeight.bold),
-                          ),
+                          ).lay(context),
                           SizedBox(
                             width: 30,
                           ),
@@ -123,7 +132,7 @@ class GmailGrid extends StatelessWidget {
                               "August 5, 2002",
                               style: TextStyle(
                                   fontSize: 16, color: Color(0xff202124)),
-                            ),
+                            ).lay(context),
                           ),
                           Icon(
                             Icons.arrow_forward_ios,
@@ -141,7 +150,7 @@ class GmailGrid extends StatelessWidget {
                     Text(
                       "More options",
                       style: TextStyle(fontSize: 12, color: Color(0xff5f6368)),
-                    ),
+                    ).lay(context),
                   ],
                 ),
               ),
@@ -159,7 +168,7 @@ class GmailGrid extends StatelessWidget {
                     Text(
                       "Contact info",
                       style: TextStyle(fontSize: 22, color: Color(0xff202124)),
-                    ),
+                    ).lay(context),
                     SizedBox(
                       height: 10,
                     ),
@@ -175,7 +184,7 @@ class GmailGrid extends StatelessWidget {
                                 fontSize: 12,
                                 color: Color(0xff5f6368),
                                 fontWeight: FontWeight.bold),
-                          ),
+                          ).lay(context),
                           SizedBox(
                             width: 30,
                           ),
@@ -184,7 +193,7 @@ class GmailGrid extends StatelessWidget {
                               "mastersajat@gmail.com",
                               style: TextStyle(
                                   fontSize: 16, color: Color(0xff202124)),
-                            ),
+                            ).lay(context),
                           ),
                           Icon(
                             Icons.arrow_forward_ios,
@@ -208,7 +217,7 @@ class GmailGrid extends StatelessWidget {
                                 fontSize: 12,
                                 color: Color(0xff5f6368),
                                 fontWeight: FontWeight.bold),
-                          ),
+                          ).lay(context),
                           SizedBox(
                             width: 30,
                           ),
@@ -217,7 +226,7 @@ class GmailGrid extends StatelessWidget {
                               "986-0277521",
                               style: TextStyle(
                                   fontSize: 16, color: Color(0xff202124)),
-                            ),
+                            ).lay(context),
                           ),
                           Icon(
                             Icons.arrow_forward_ios,
@@ -235,7 +244,7 @@ class GmailGrid extends StatelessWidget {
                     Text(
                       "More options",
                       style: TextStyle(fontSize: 12, color: Color(0xff5f6368)),
-                    ),
+                    ).lay(context),
                   ],
                 ),
               ),

@@ -6,12 +6,12 @@ import '../../Enums/Navigation.dart';
 import '../../providers/timeline_management.dart';
 
 class Certs extends StatelessWidget {
-  const Certs({Key? key}) : super(key: key);
-
+  final bool isMobile;
+  const Certs(this.isMobile, {super.key});
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
         create: (_) => TimelineManagement(),
-        child: MyTimeline(NavigationEnum.certs.color));
+        child: MyTimeline(NavigationEnum.certs.color, isMobile));
   }
 }

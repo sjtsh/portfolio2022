@@ -8,6 +8,8 @@ import 'Indicator.dart';
 import 'SingleProject.dart';
 
 class ProjectsScreen extends StatefulWidget {
+  const ProjectsScreen({super.key});
+
   @override
   _ProjectsScreenState createState() => _ProjectsScreenState();
 }
@@ -27,6 +29,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
             Expanded(
               child: PageView(
                 controller: context.read<ProjectManagement>().controller,
+                onPageChanged: (int i)=> context.read<ProjectManagement>().clickedIndicator(i),
                 pageSnapping: true,
                 children: [
                   for (int i = 0; i < DataManagement.projects.length; i++)

@@ -3,7 +3,14 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 extension Txt on Text {
-  Text lay(context) => copyWith(OptimalSize.optM(style?.fontSize,context));
+  Text lay(context) {
+    double? optimal = OptimalSize.optM(style?.fontSize, context);
+    double optimalNotNull = optimal ?? 14;
+    optimalNotNull = min(24, optimalNotNull * 2);
+    optimalNotNull = max(12, optimalNotNull);
+    optimalNotNull = min(style?.fontSize ?? 14, optimalNotNull);
+    return copyWith(optimalNotNull);
+  }
 
   Text copyWith(double? font) => Text(
         data!,
@@ -54,18 +61,21 @@ class OptimalSize {
 
   static double optN(double size, context) {
     var hw = _getHW(context);
-    return _opt(size, hw.width, hw.height,context);
+    return _opt(size, hw.width, hw.height, context);
   }
 
   static double optI(int size, context) {
     var hw = _getHW(context);
-    return _opt(size + 0.0, hw.width, hw.height,context);
+    return _opt(size + 0.0, hw.width, hw.height, context);
   }
 
   static Size size(context) => MediaQuery.of(context).size;
 
-  static double optWbyR(double ratio, BuildContext context) => size(context).width * ratio;
-  static double optHbyR(double ratio, BuildContext context) => size(context).height * ratio;
+  static double optWbyR(double ratio, BuildContext context) =>
+      size(context).width * ratio;
+
+  static double optHbyR(double ratio, BuildContext context) =>
+      size(context).height * ratio;
 
   static double _opt(double size, double width, double height, context) {
     return (size * _ratio(context)).round() + .0;

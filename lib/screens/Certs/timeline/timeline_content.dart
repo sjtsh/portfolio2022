@@ -38,66 +38,12 @@ class TimelineContentWidget extends StatelessWidget {
                 .headlineSmall
                 ?.copyWith(color: Colors.white.withOpacity(0.5)),
           ).lay(context),
-          SizedBox(height: (20 + .0)),
-          MouseRegion(
-            cursor: SystemMouseCursors.grab,
-            onEnter: (enter) {
-              showDialog(
-                  context: context,
-                  builder: (_) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Image.asset(content.assetURL, fit: BoxFit.contain),
-                            AnimatedPositioned(
-                              right: 20,
-                              top: 20,
-                              duration: Duration(milliseconds: 200),
-                              child: Container(
-                                height: 60,
-                                width: 250,
-                                color: Color(0xff295881),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 10.0),
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.info,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(width: 12.lay(context)),
-                                      Expanded(
-                                          child: Text(
-                                        "Tap anywhere to exit",
-                                        style: TextStyle(color: Colors.white),
-                                      ).lay(context)),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    );
-                  });
-            },
-            onExit: (exit) {
-              Navigator.pop(context);
-            },
+          const SizedBox(height: 20),
+          GestureDetector(
+            onTap: () => show(context),
             child: AnimatedContainer(
               height: index == context.watch<TimelineManagement>().currentItem
                   ? (MySpacing.getLineHeight(constraints.maxHeight) * 2 / 3)
-                      .lay(context)
                   : 0,
               duration: AnimationStats.animationDuration,
               child: Image.asset(content.assetURL, fit: BoxFit.contain),
@@ -107,4 +53,52 @@ class TimelineContentWidget extends StatelessWidget {
       ),
     );
   }
+
+  show(BuildContext context) => showDialog(
+      context: context,
+      builder: (_) {
+        return GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Image.asset(content.assetURL, fit: BoxFit.contain),
+                AnimatedPositioned(
+                  right: 20,
+                  top: 20,
+                  duration: Duration(milliseconds: 200),
+                  child: Container(
+                    height: 60,
+                    width: 250,
+                    color: Color(0xff295881),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.info,
+                            color: Colors.white,
+                          ),
+                          SizedBox(width: 12.lay(context)),
+                          Expanded(
+                              child: Text(
+                            "Tap anywhere to exit",
+                            style: TextStyle(color: Colors.white),
+                          ).lay(context)),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      });
 }

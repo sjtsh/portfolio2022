@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/components/Ui%20components/ByLayout/ByLayout.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'WhenClicked.dart';
 
 class GithubGrid extends StatelessWidget {
   final BoxConstraints constraints;
+  final bool isClicked;
+  final Function click;
 
-  const GithubGrid(this.constraints, {Key? key}) : super(key: key);
+  const GithubGrid(this.constraints,
+      {super.key, required this.isClicked, required this.click});
 
   @override
   Widget build(BuildContext context) {
     return WhenClicked(
       textToShow: 'Visit My Github',
       onTap: () {
+        click();
+
         launchUrl(Uri.parse("https://github.com/sjtsh"));
       },
+      isClicked: isClicked,
       child: Container(
         decoration: BoxDecoration(
             color: const Color(0xff0D1117),
@@ -62,14 +69,14 @@ class GithubGrid extends StatelessWidget {
                   color: Color(0xffE6EDF6),
                   fontSize: 24,
                 ),
-              ),
+              ).lay(context),
               const Text(
                 "sjtsh",
                 style: TextStyle(
                   color: Color(0XFF7d8590),
                   fontSize: 20,
                 ),
-              ),
+              ).lay(context),
               const SizedBox(
                 height: 20,
               ),
@@ -79,7 +86,7 @@ class GithubGrid extends StatelessWidget {
                   color: Color(0xffE6EDF6),
                   fontSize: 16,
                 ),
-              ),
+              ).lay(context),
               const SizedBox(
                 height: 20,
               ),
@@ -99,7 +106,7 @@ class GithubGrid extends StatelessWidget {
                       color: Color(0XFF7d8590),
                       fontSize: 16,
                     ),
-                  ),
+                  ).lay(context),
                 ],
               ),
               const SizedBox(
@@ -111,14 +118,14 @@ class GithubGrid extends StatelessWidget {
                   color: Color(0XFF7d8590),
                   fontSize: 16,
                 ),
-              ),
+              ).lay(context),
               const Text(
                 "935 contributions made in the last year",
                 style: TextStyle(
                   color: Color(0XFF7d8590),
                   fontSize: 16,
                 ),
-              ),
+              ).lay(context),
             ],
           ),
         ),

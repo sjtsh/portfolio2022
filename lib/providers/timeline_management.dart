@@ -17,32 +17,40 @@ class TimelineManagement with DiagnosticableTreeMixin, ChangeNotifier {
   ScrollController wheelScrollController =
       ScrollController(initialScrollOffset: 80);
 
-  initiateScroll(double height, int timelineListLength) {
+  double isMobileOffsetCorrectionWheel(double height) =>
+      height / 18; //based on height
+  double isMobileOffsetCorrectionContent(double height) =>
+      height / 2 - MySpacing.getLineHeight(height) / 2;
+
+  initiateScroll(double height, int timelineListLength, bool isMobile) {
     double offset =
         (MySpacing.getLineHeight(height) * (timelineListLength - 1) / 2) +
             MySpacing.getLineHeight(height) / 3;
+    if (isMobile) offset += isMobileOffsetCorrectionWheel(height);
     wheelScrollController.animateTo(offset,
         duration: AnimationStats.animationDuration, curve: Curves.easeInOut);
 
     contentScrollController.addListener(() {
-      int newScrolledIndex = (contentScrollController.offset) ~/
+      int newScrolledIndex = (contentScrollController.offset +
+              isMobileOffsetCorrectionContent(height)) ~/
           (ObjectProperties.outerCircleSize + MySpacing.getLineHeight(height));
       if (newScrolledIndex != currentItem) {
-        changeIndexByScroll(newScrolledIndex, height, timelineListLength);
+        changeIndexByScroll(
+            newScrolledIndex, height, timelineListLength, isMobile);
       }
     });
   }
 
   //change by index with scroll
-  changeIndexByScroll(
-      int newCurrentItem, double height, int timelineListLength) {
+  changeIndexByScroll(int newCurrentItem, double height, int timelineListLength,
+      bool isMobile) {
     bool isForward = newCurrentItem > currentItem;
     currentItem = newCurrentItem;
     notifyListeners();
     if (segmentAnimation) {
       animateSegment(isForward);
     }
-    scrollWheel(height, timelineListLength);
+    scrollWheel(height, timelineListLength, isMobile);
   }
 
   animateSegment(bool isForward) {
@@ -70,12 +78,14 @@ class TimelineManagement with DiagnosticableTreeMixin, ChangeNotifier {
   }
 
   //scrolls the left wheel
-  scrollWheel(double height, int timelineListLength) {
+  scrollWheel(double height, int timelineListLength, bool isMobile) {
+    double scrollTo = (MySpacing.getLineHeight(height) *
+            (timelineListLength - 1 - currentItem) /
+            2) +
+        MySpacing.getLineHeight(height) / 3;
+    if (isMobile) scrollTo += isMobileOffsetCorrectionWheel(height);
     wheelScrollController.animateTo(
-      (MySpacing.getLineHeight(height) *
-              (timelineListLength - 1 - currentItem) /
-              2) +
-          MySpacing.getLineHeight(height) / 3,
+      scrollTo,
       // ObjectProperties.outerCircleSize,
       duration: AnimationStats.animationDuration,
       curve: Curves.easeInOut,

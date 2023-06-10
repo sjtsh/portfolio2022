@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:portfolio/providers/navigation_management.dart';
+import 'package:portfolio/screens/Navigation/MobileNavigation.dart';
 import 'package:provider/provider.dart';
 
 import '../../Enums/Navigation.dart';
@@ -13,7 +14,9 @@ import '../../components/spacing.dart';
 import '../../entities/ButtonHoverObj.dart';
 
 class Navigation extends StatelessWidget {
-  const Navigation({Key? key}) : super(key: key);
+  bool isMobileWidth;
+
+  Navigation({super.key, this.isMobileWidth = false});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,9 @@ class Navigation extends StatelessWidget {
         top: 0,
         height: OptimalSize.optHbyR(0.1, context),
         width: OptimalSize.optWbyR(1, context),
-        child: const AnimatedNavigation());
+        child: isMobileWidth
+            ? const MobileNavigation()
+            : const AnimatedNavigation());
   }
 }
 

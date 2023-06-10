@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/providers/navigation_management.dart';
+import 'package:portfolio/screens/Navigation/MobileNavigation.dart';
 import 'package:portfolio/screens/Navigation/NavigationAnimation.dart';
 import 'package:provider/provider.dart';
 
@@ -11,6 +12,7 @@ class MyPortfolio extends StatelessWidget {
 
   List<Widget> elaborate(int counter, List<(double, NavigationEnum)> items) {
     List<Widget> children = [];
+
     for (var item in items) {
       children.add(counter == 0 ? Container() : NavigationAnimation(item));
       counter--;
@@ -29,10 +31,22 @@ class MyPortfolio extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.black,
         body: LayoutBuilder(builder: (context, constraints) {
+          if (MediaQuery.of(context).size.width > 480) {
+            return Stack(
+              children: [
+                ...elaborate(
+                    2, context.watch<NavigationManagement>().currentNav),
+                Navigation()
+              ],
+            );
+          }
           return Stack(
             children: [
-              ...elaborate(2, context.watch<NavigationManagement>().currentNav),
-              const Navigation(),
+              context
+                  .watch<MobileNavigationManagement>()
+                  .currentNav
+                  .screen(context),
+              Navigation(isMobileWidth: true)
             ],
           );
         }),

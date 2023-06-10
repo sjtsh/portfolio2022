@@ -1,6 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:portfolio/Enums/Navigation.dart';
 
+class MobileNavigationManagement with ChangeNotifier {
+  NavigationEnum _currentNav = NavigationEnum.me;
+
+  NavigationEnum get currentNav => _currentNav;
+
+  set currentNav(NavigationEnum value) {
+    _currentNav = value;
+    notifyListeners();
+  }
+}
+
 class NavigationManagement with ChangeNotifier {
   List<(double, NavigationEnum)> currentNav = [
     (100, NavigationEnum.me),

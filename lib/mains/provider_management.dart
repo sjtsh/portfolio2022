@@ -32,6 +32,9 @@ class ProviderManagement extends StatelessWidget {
         ChangeNotifierProvider(create: (_) {
           return NavigationManagement();
         }),
+        ChangeNotifierProvider(create: (_) {
+          return MobileNavigationManagement();
+        }),
       ],
       child: EstablishLayout(
         child: Builder(builder: (context) {

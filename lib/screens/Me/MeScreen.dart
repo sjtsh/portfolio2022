@@ -8,15 +8,29 @@ import 'GithubGrid.dart';
 import 'GmailGrid.dart';
 import 'LinkedInGrid.dart';
 
-class MeScreen extends StatelessWidget {
+class MeScreen extends StatefulWidget {
   MeScreen({Key? key}) : super(key: key);
 
-  final List<Widget Function(BoxConstraints constraints)> grids = [
-    (BoxConstraints c) => GithubGrid(c),
-    (BoxConstraints c) => CVGrid(c),
-    (BoxConstraints c) => LinkedInGrid(c),
-    (BoxConstraints c) => GmailGrid(c),
-  ];
+  @override
+  State<MeScreen> createState() => _MeScreenState();
+}
+
+class _MeScreenState extends State<MeScreen> {
+  int? currentlyClicked;
+
+  List<Widget Function(BoxConstraints constraints)> get grids {
+    click(int i) => setState(() => currentlyClicked = i);
+    return [
+      (BoxConstraints c) => GithubGrid(c,
+          click: () => click(0), isClicked: 0 == currentlyClicked),
+      (BoxConstraints c) =>
+          CVGrid(c, click: () => click(1), isClicked: 1 == currentlyClicked),
+      (BoxConstraints c) => LinkedInGrid(c,
+          click: () => click(2), isClicked: 2 == currentlyClicked),
+      (BoxConstraints c) =>
+          GmailGrid(c, click: () => click(3), isClicked: 3 == currentlyClicked),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {

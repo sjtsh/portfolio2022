@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/components/Ui%20components/ByLayout/ByLayout.dart';
 import 'package:portfolio/screens/Me/WhenClicked.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LinkedInGrid extends StatelessWidget {
   final BoxConstraints constraints;
+  final bool isClicked;
+  final Function click;
 
-  const LinkedInGrid(this.constraints, {super.key});
+  const LinkedInGrid(this.constraints, {super.key, required this.isClicked, required this.click});
 
   @override
   Widget build(BuildContext context) {
     return WhenClicked(
       textToShow: 'Visit My Linked In',
       onTap: () {
+        click();
         launchUrl(Uri.parse("https://www.linkedin.com/in/sajat-prasad-shrestha-7483791ba/"));
       },
+      isClicked: isClicked,
       child: LayoutBuilder(
         builder: (context, constraints) {
           return Container(
@@ -59,14 +64,14 @@ class LinkedInGrid extends StatelessWidget {
                           color: Colors.black,
                           fontSize: 20,
                         ),
-                      ),
+                      ).lay(context),
                       const Text(
                         "Open to outsourced projects",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
                         ),
-                      ),
+                      ).lay(context),
                       const SizedBox(
                         height: 4,
                       ),
@@ -76,7 +81,7 @@ class LinkedInGrid extends StatelessWidget {
                           color: Colors.black.withOpacity(0.7),
                           fontSize: 16,
                         ),
-                      ),
+                      ).lay(context),
                       const SizedBox(
                         height: 4,
                       ),
@@ -89,7 +94,7 @@ class LinkedInGrid extends StatelessWidget {
                               color: Colors.black.withOpacity(0.7),
                               fontSize: 16,
                             ),
-                          ),
+                          ).lay(context),
                           SizedBox(
                             width: 10,
                           ),
@@ -116,7 +121,7 @@ class LinkedInGrid extends StatelessWidget {
                               color: Colors.black.withOpacity(0.7),
                               fontSize: 16,
                             ),
-                          ),
+                          ).lay(context),
                         ],
                       ),
                       SizedBox(
@@ -128,14 +133,14 @@ class LinkedInGrid extends StatelessWidget {
                           color: Colors.black,
                           fontSize: 24,
                         ),
-                      ),
+                      ).lay(context),
                       const Text(
                         "Software developer specialized in Flutter \nProficient with GCP, Mongo and Node js \nHave worked with MySQL and django",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
                         ),
-                      ),
+                      ).lay(context),
                     ],
                   ),
                 ),

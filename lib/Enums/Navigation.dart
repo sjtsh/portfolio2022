@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 
 import '../screens/Projects/ProjectHome.dart';
 
-
 enum NavigationEnum {
   certs,
   me,
@@ -36,13 +35,15 @@ enum NavigationEnum {
   }
 
   Widget screen(BuildContext context) {
-    return SizedBox(
-        width: MediaQuery.of(context).size.width,
+    double width = MediaQuery.of(context).size.width;
+    return Container(
+        color: color,
+        width: width,
         height: MediaQuery.of(context).size.height,
         child: switch (this) {
-          NavigationEnum.certs => const Certs(),
+          NavigationEnum.certs => Certs(width < 480),
           NavigationEnum.proj => const ProjectHome(),
-          NavigationEnum.me =>  MeScreen(),
+          NavigationEnum.me => MeScreen(),
         });
   }
 }

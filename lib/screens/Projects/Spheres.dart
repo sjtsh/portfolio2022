@@ -10,7 +10,7 @@ class Spheres1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MediaQuery.of(context).size.width > 800
+    return MediaQuery.of(context).size.width > 480
         ? Positioned(
             top: 30,
             right: 150,
@@ -45,10 +45,10 @@ class Spheres2 extends StatelessWidget {
   Spheres2(this.project);
   @override
   Widget build(BuildContext context) {
-    return MediaQuery.of(context).size.width > 800
+    return MediaQuery.of(context).size.width > 480
         ? Positioned(
             top: 80,
-            left: 800,
+            left: 480,
             child: Container(
               height: 40,
               width: 40,
@@ -74,10 +74,10 @@ class Spheres3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MediaQuery.of(context).size.width > 800
+    return MediaQuery.of(context).size.width > 480
         ? Positioned(
             bottom: 50,
-            right: 800,
+            right: 480,
             child: Container(
               height: 75,
               width: 75,
@@ -110,7 +110,7 @@ class Spheres4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MediaQuery.of(context).size.width > 800
+    return MediaQuery.of(context).size.width > 480
         ? Positioned(
             bottom: 40,
             left: 100,
