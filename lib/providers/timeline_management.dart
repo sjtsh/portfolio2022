@@ -19,8 +19,7 @@ class TimelineManagement with DiagnosticableTreeMixin, ChangeNotifier {
 
   double isMobileOffsetCorrectionWheel(double height) =>
       height / 18; //based on height
-  double isMobileOffsetCorrectionContent(double height) =>
-      height / 2 - MySpacing.getLineHeight(height) / 2;
+  double isMobileOffsetCorrectionContent(double height) =>MySpacing.getLineHeight(height);
 
   initiateScroll(double height, int timelineListLength, bool isMobile) {
     double offset =
@@ -79,6 +78,8 @@ class TimelineManagement with DiagnosticableTreeMixin, ChangeNotifier {
 
   //scrolls the left wheel
   scrollWheel(double height, int timelineListLength, bool isMobile) {
+    print(
+        "\nheight: $height\nisMobileOffsetCorrectionWheel: ${isMobileOffsetCorrectionWheel(height)}\nisMobileOffsetCorrectionContent: ${isMobileOffsetCorrectionContent(height)}\n");
     double scrollTo = (MySpacing.getLineHeight(height) *
             (timelineListLength - 1 - currentItem) /
             2) +

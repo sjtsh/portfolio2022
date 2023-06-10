@@ -20,13 +20,18 @@ class Navigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if(isMobileWidth) {
+      return Positioned(
+          top: 0,
+          height:60,
+          width: OptimalSize.optWbyR(1, context),
+          child: const MobileNavigation());
+    }
     return Positioned(
         top: 0,
         height: OptimalSize.optHbyR(0.1, context),
         width: OptimalSize.optWbyR(1, context),
-        child: isMobileWidth
-            ? const MobileNavigation()
-            : const AnimatedNavigation());
+        child:  const AnimatedNavigation());
   }
 }
 

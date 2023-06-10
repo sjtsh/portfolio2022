@@ -5,6 +5,7 @@ import 'package:portfolio/providers/navigation_management.dart';
 import 'package:portfolio/providers/timeline_management.dart';
 import 'package:provider/provider.dart';
 
+import '../Enums/Navigation.dart';
 import '../components/Ui components/ByLayout/ByLayout.dart';
 import 'my_portfolio.dart';
 
@@ -47,6 +48,10 @@ class ProviderManagement extends StatelessWidget {
                 .reversed,
             null
           ];
+          context.read<NavigationManagement>().currentNav.addAll([
+            (100, NavigationEnum.me),
+            (0, NavigationEnum.certs),
+          ]);
           return const MyPortfolio();
         }),
       ),

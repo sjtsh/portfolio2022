@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import '../../Enums/Navigation.dart';
 
 class NavigationAnimation extends StatelessWidget {
-  final (double, NavigationEnum) nav;
+  final (int, NavigationEnum) nav;
 
   NavigationAnimation(this.nav, {super.key});
 

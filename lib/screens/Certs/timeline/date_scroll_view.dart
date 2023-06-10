@@ -44,7 +44,8 @@ class DateScrollView extends StatelessWidget {
               .map((e) => RotatedBox(
                     quarterTurns: isMobile ? 1 : 0,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           (e?.year ?? "").toString(),

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:portfolio/Enums/Navigation.dart';
 
 class MobileNavigationManagement with ChangeNotifier {
-  NavigationEnum _currentNav = NavigationEnum.me;
+  NavigationEnum _currentNav = NavigationEnum.certs;
 
   NavigationEnum get currentNav => _currentNav;
 
@@ -13,10 +13,8 @@ class MobileNavigationManagement with ChangeNotifier {
 }
 
 class NavigationManagement with ChangeNotifier {
-  List<(double, NavigationEnum)> currentNav = [
-    (100, NavigationEnum.me),
-    (0, NavigationEnum.certs),
-  ];
+  List<(int, NavigationEnum)> currentNav = [];
+
   bool animateNavigation = true;
 
   void changePage(int i, BuildContext context) async {
@@ -37,7 +35,7 @@ class NavigationManagement with ChangeNotifier {
     }
   }
 
-  void changeLast(double i, NavigationEnum nav) {
+  void changeLast(int i, NavigationEnum nav) {
     if (currentNav.last.$2 == nav) {
       currentNav.removeLast();
       currentNav.add((i, nav));

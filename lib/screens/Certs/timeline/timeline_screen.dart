@@ -40,7 +40,7 @@ class _MyTimelineState extends State<MyTimeline> {
       backgroundColor: widget.color,
       body: LayoutBuilder(builder: (context, BoxConstraints constraints) {
         List<Widget> children(bool isMobile) => [
-              if (isMobile) const SizedBox(height: 100),
+              if (isMobile) const SizedBox(height: 72),
               SizedBox(
                 width: isMobile ? null : 100,
                 height: isMobile ? 40 : null,
@@ -48,9 +48,9 @@ class _MyTimelineState extends State<MyTimeline> {
               ),
               RotatedBox(
                 quarterTurns: isMobile ? 1 : 0,
-                child: const Icon(
+                child:  Icon(
                   Icons.arrow_left_rounded,
-                  size: 80,
+                  size: isMobile ? 30: 80,
                   color: Colors.white,
                 ),
               ),

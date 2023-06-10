@@ -10,7 +10,7 @@ import '../screens/Navigation/Navigation.dart';
 class MyPortfolio extends StatelessWidget {
   const MyPortfolio({Key? key}) : super(key: key);
 
-  List<Widget> elaborate(int counter, List<(double, NavigationEnum)> items) {
+  List<Widget> elaborate(int counter, List<(int, NavigationEnum)> items) {
     List<Widget> children = [];
 
     for (var item in items) {
@@ -33,11 +33,9 @@ class MyPortfolio extends StatelessWidget {
         body: LayoutBuilder(builder: (context, constraints) {
           if (MediaQuery.of(context).size.width > 480) {
             return Stack(
-              children: [
-                ...elaborate(
-                    2, context.watch<NavigationManagement>().currentNav),
-                Navigation()
-              ],
+              children: [...elaborate(2, context
+              .watch<NavigationManagement>()
+              .currentNav), Navigation()],
             );
           }
           return Stack(
