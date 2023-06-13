@@ -20,10 +20,10 @@ class Navigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(isMobileWidth) {
+    if (isMobileWidth) {
       return Positioned(
           top: 0,
-          height:60,
+          height: 60,
           width: OptimalSize.optWbyR(1, context),
           child: const MobileNavigation());
     }
@@ -31,7 +31,7 @@ class Navigation extends StatelessWidget {
         top: 0,
         height: OptimalSize.optHbyR(0.1, context),
         width: OptimalSize.optWbyR(1, context),
-        child:  const AnimatedNavigation());
+        child: const AnimatedNavigation());
   }
 }
 
@@ -67,8 +67,6 @@ class _AnimatedNavigationState extends State<AnimatedNavigation> {
           children: [
             Expanded(
               child: Builder(builder: (context) {
-                NavigationManagement watch =
-                    context.watch<NavigationManagement>();
                 List<NavigationEnum> presentable =
                     NavigationEnum.values.toList();
                 return Row(
@@ -91,7 +89,6 @@ class _AnimatedNavigationState extends State<AnimatedNavigation> {
   }
 
   Widget buildButton(int i, NavigationEnum nav) {
-    NavigationManagement watch = context.watch<NavigationManagement>();
     ButtonHoverObj obj = ButtonHoverObj(
         key: switch (i) { 0 => key1, 1 => key3, _ => key2 }, text: nav);
     var sizeTrans = obj.generateMySizeRatio(context);
@@ -99,35 +96,29 @@ class _AnimatedNavigationState extends State<AnimatedNavigation> {
     return Align(
       alignment: Alignment.centerRight,
       child: AnimatedOpacity(
-        opacity: watch.current == nav
+        opacity: context.watch<MobileNavigationManagement>().currentNav == nav
             ? 1
             : min(1, sizeTrans.transparency.abs() + 0.2),
         duration: const Duration(milliseconds: 200),
-        child: MouseRegion(
-          onEnter: (PointerEnterEvent listener) =>
-              context.read<NavigationManagement>().hoverPage(i),
-          onExit: (PointerExitEvent listener) =>
-              context.read<NavigationManagement>().exitPage(i),
-          child: GestureDetector(
-            onTap: () =>
-                context.read<NavigationManagement>().changePage(i, context),
-            child: Container(
-              key: obj.key,
-              height: ButtonObjectProperties.buttonHeight,
-              width: ButtonObjectProperties.buttonWidth,
-              child: Center(
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  height: hw.height,
-                  width: hw.width,
-                  child: FittedBox(
-                    fit: BoxFit.fitWidth,
-                    child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: AutoSizeText(obj.text.text,
-                            style: const TextStyle(
-                                fontSize: 40, color: Colors.white))),
-                  ),
+        child: GestureDetector(
+          onTap: () =>
+              context.read<MobileNavigationManagement>().currentNav = nav,
+          child: Container(
+            key: obj.key,
+            height: ButtonObjectProperties.buttonHeight,
+            width: ButtonObjectProperties.buttonWidth,
+            child: Center(
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                height: hw.height,
+                width: hw.width,
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: AutoSizeText(obj.text.text,
+                          style: const TextStyle(
+                              fontSize: 40, color: Colors.white))),
                 ),
               ),
             ),

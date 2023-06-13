@@ -31,9 +31,6 @@ class ProviderManagement extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) {
-          return NavigationManagement();
-        }),
-        ChangeNotifierProvider(create: (_) {
           return MobileNavigationManagement();
         }),
       ],
@@ -48,10 +45,6 @@ class ProviderManagement extends StatelessWidget {
                 .reversed,
             null
           ];
-          context.read<NavigationManagement>().currentNav.addAll([
-            (100, NavigationEnum.me),
-            (0, NavigationEnum.certs),
-          ]);
           return const MyPortfolio();
         }),
       ),

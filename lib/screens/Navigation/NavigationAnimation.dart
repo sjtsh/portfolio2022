@@ -18,20 +18,11 @@ class NavigationAnimation extends StatelessWidget {
     double totalWidth = MediaQuery.of(context).size.width;
     double totalHeight = MediaQuery.of(context).size.height;
     double width = totalWidth* percentDouble;
-    NavigationManagement watch = context.watch<NavigationManagement>();
-    bool animateNavigation = watch.animateNavigation;
-    return AnimatedPositioned(
+    return Container(
+      height: totalHeight,
       width: totalWidth,
-      left: totalWidth - width,
-      duration: Duration(
-          milliseconds:
-          animateNavigation ? max(200, (500 * percentDouble).floor()):0),
-      child: Container(
-        height: totalHeight,
-        width: totalWidth,
-        color: nav.$2.color,
-        child: nav.$2.screen(context),
-      ),
+      color: nav.$2.color,
+      child: nav.$2.screen(context),
     );
   }
 }

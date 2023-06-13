@@ -10,16 +10,6 @@ import '../screens/Navigation/Navigation.dart';
 class MyPortfolio extends StatelessWidget {
   const MyPortfolio({Key? key}) : super(key: key);
 
-  List<Widget> elaborate(int counter, List<(int, NavigationEnum)> items) {
-    List<Widget> children = [];
-
-    for (var item in items) {
-      children.add(counter == 0 ? Container() : NavigationAnimation(item));
-      counter--;
-    }
-    return children;
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,9 +23,13 @@ class MyPortfolio extends StatelessWidget {
         body: LayoutBuilder(builder: (context, constraints) {
           if (MediaQuery.of(context).size.width > 480) {
             return Stack(
-              children: [...elaborate(2, context
-              .watch<NavigationManagement>()
-              .currentNav), Navigation()],
+              children: [
+                NavigationAnimation((
+                  100,
+                  context.watch<MobileNavigationManagement>().currentNav
+                )),
+                Navigation()
+              ],
             );
           }
           return Stack(
